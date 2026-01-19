@@ -168,6 +168,31 @@
                         <label for="additional-notes">Additional Notes or Questions</label>
                         <textarea id="additional-notes" name="additional-notes" placeholder="Delivery address, setup preferences, or any other details we should know..."></textarea>
                     </div>
+<!-- Delivery Distance -->
+<div class="form-group">
+    <label for="deliveryMiles">
+        Delivery Distance (one-way miles from us)
+    </label>
+    <input
+        type="number"
+        id="deliveryMiles"
+        name="Delivery Miles (One Way)"
+        min="0"
+        placeholder="Enter one-way miles"
+    >
+</div>
+
+<!-- Delivery Fee Info -->
+<p style="font-size: 0.9rem; color: var(--light-text); margin-bottom: 1rem;">
+    🚚 Delivery is <strong>$3 per mile</strong> (round trip).  
+    First <strong>8 miles are free</strong>.
+</p>
+
+<!-- Final Estimated Total -->
+<h3 style="text-align: center; color: var(--primary-color); margin-bottom: 1.5rem;">
+    Estimated Total with Delivery:
+    <span id="finalTotal">$0.00</span>
+</h3>
 
                     <button type="submit" class="btn btn-secondary" style="width: 100%;">Submit Booking Request</button>
                     
@@ -195,18 +220,8 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    
-    <!-- Additional script to sync quantities with form -->
-    <script>
-        // Sync quantity values to hidden form fields before submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            document.getElementById('white-chairs-qty').value = document.getElementById('white-chairs').value;
-            document.getElementById('adult-tables-qty').value = document.getElementById('adult-tables').value;
-            document.getElementById('kids-chairs-qty').value = document.getElementById('kids-chairs').value;
-            document.getElementById('kids-tables-qty').value = document.getElementById('kids-tables').value;
-            document.getElementById('estimated-total').value = document.getElementById('totalPrice').textContent;
-        });
-    </script>
+<script src="assets/js/main.js"></script>
+
+
 </body>
 </html>

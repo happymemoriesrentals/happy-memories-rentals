@@ -70,6 +70,22 @@ function handleFormSubmission(formId, formspreeUrl) {
         }
 
         // Collect form data
+        // Sync rental quantities + final total before submission
+document.getElementById('white-chairs-qty').value =
+    document.getElementById('white-chairs')?.value || 0;
+
+document.getElementById('adult-tables-qty').value =
+    document.getElementById('adult-tables')?.value || 0;
+
+document.getElementById('kids-chairs-qty').value =
+    document.getElementById('kids-chairs')?.value || 0;
+
+document.getElementById('kids-tables-qty').value =
+    document.getElementById('kids-tables')?.value || 0;
+
+document.getElementById('estimated-total').value =
+    document.getElementById('finalTotal')?.textContent || '$0.00';
+
         const formData = new FormData(form);
         const data = {};
         formData.forEach((value, key) => {
@@ -143,7 +159,6 @@ function showMessage(type, message) {
  * Note: Call this function on the rentals page after quantities are updated
  */
 function calculateTotal() {
-    // Define rental prices
     const prices = {
         'white-chairs': 1.50,
         'adult-tables': 10.00,
@@ -151,45 +166,64 @@ function calculateTotal() {
         'kids-tables': 10.00
     };
 
-    let total = 0;
-    
-    // Loop through each rental item and calculate subtotal
+    let subtotal = 0;
+
     for (const [itemId, price] of Object.entries(prices)) {
-        const quantityInput = document.getElementById(itemId);
-        if (quantityInput) {
-            const quantity = parseInt(quantityInput.value) || 0;
-            total += quantity * price;
-        }
+        const qty = parseInt(document.getElementById(itemId)?.value) || 0;
+        subtotal += qty * price;
     }
 
-    // Display total if element exists
+    // Delivery calculation
+    const milesInput = document.getElementById('deliveryMiles');
+    let deliveryFee = 0;
+
+    if (milesInput) {
+        const miles = parseFloat(milesInput.value) || 0;
+        const chargeableMiles = Math.max(0, miles - 8); // first 8 miles free
+        deliveryFee = chargeableMiles * 2 * 3; // round trip × $3
+    }
+
+    const finalTotal = subtotal + deliveryFee;
+
+    // Display totals
     const totalDisplay = document.getElementById('totalPrice');
     if (totalDisplay) {
-        totalDisplay.textContent = `$${total.toFixed(2)}`;
+        totalDisplay.textContent = `$${subtotal.toFixed(2)}`;
     }
 
-    return total;
+    const finalDisplay = document.getElementById('finalTotal');
+    if (finalDisplay) {
+        finalDisplay.textContent = `$${finalTotal.toFixed(2)}`;
+    }
+
+    return finalTotal;
 }
+
+
+    
 
 // ========================================
 // Initialize Quantity Listeners (for Rentals Page)
 // ========================================
 function initQuantityListeners() {
     const quantityInputs = document.querySelectorAll('.quantity-selector input');
-    
+    const milesInput = document.getElementById('deliveryMiles');
+
     quantityInputs.forEach(input => {
-        // Update total when quantity changes
         input.addEventListener('input', calculateTotal);
-        
-        // Ensure minimum value is 0
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             if (this.value < 0) this.value = 0;
         });
     });
-    
-    // Calculate initial total
+
+    if (milesInput) {
+        milesInput.addEventListener('input', calculateTotal);
+    }
+
     calculateTotal();
 }
+
+
 
 // ========================================
 // Initialize Forms Based on Page
