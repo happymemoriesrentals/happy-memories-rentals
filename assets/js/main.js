@@ -136,10 +136,46 @@ function initRentalTotals() {
 
     Object.keys(prices).forEach(id => {
         const input = document.getElementById(id);
-        if (input) input.addEventListener('input', calculateTotal);
+        if (input) {
+            input.addEventListener('input', calculateTotal);
+            input.addEventListener('input', () => checkMaxQuantity(input));
+        }
     });
 
     calculateTotal();
+}
+
+// ========================================
+// MAX QUANTITY NOTIFICATION
+// ========================================
+function checkMaxQuantity(input) {
+    const max = parseInt(input.getAttribute('max'));
+    const value = parseInt(input.value);
+    
+    // Remove any existing max message
+    const existingMsg = input.parentElement.querySelector('.max-qty-message');
+    if (existingMsg) {
+        existingMsg.remove();
+    }
+    
+    // Show message if at max
+    if (value >= max && max > 0) {
+        const message = document.createElement('div');
+        message.className = 'max-qty-message';
+        message.textContent = '✓ Max quantity selected';
+        message.style.cssText = `
+            color: #ff6b9d;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background: #fff0f5;
+            border-radius: 8px;
+            border: 2px solid #ff6b9d;
+            display: inline-block;
+        `;
+        input.parentElement.appendChild(message);
+    }
 }
 
 // ========================================
