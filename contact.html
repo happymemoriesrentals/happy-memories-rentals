@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Happy Memories Rentals for party rental inquiries, questions, or support.">
+    <title>Contact Us - Happy Memories Rentals</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🎈 Happy Memories Rentals</a>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rentals.html">Rentals & Booking</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>📧 <strong>Email:</strong> <a href="mailto:hello@happymemoriesrentals.com">hello@happymemoriesrentals.com</a></p>
+                <p>📱 <strong>Phone:</strong> <a href="tel:+15551234567">(555) 123-4567</a></p>
+                <p>📍 <strong>Service Area:</strong> [Your City/Region]</p>
+                <p>⏰ <strong>Hours:</strong> Monday - Saturday, 9am - 6pm</p>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Follow Us on Social Media</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" title="Follow us on Instagram" style="color: var(--primary-color);">📷 Instagram</a>
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" title="Like us on Facebook" style="color: var(--primary-color);">📘 Facebook</a>
+                </div>
+                <p style="margin-top: 1rem; color: var(--light-text);">See our latest party setups and special offers!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section" style="background-color: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Send Us a Message</h2>
+            <p class="section-description">Have a question? Need help with your booking? We're here to help!</p>
+            
+            <div class="form-container">
+                <!-- Form Message (Success/Error) -->
+                <div id="formMessage" class="form-message"></div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">-- Select a subject --</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="booking">Booking Question</option>
+                            <option value="pricing">Pricing Information</option>
+                            <option value="availability">Check Availability</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary" style="width: 100%;">Send Message</button>
+                    
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--light-text);">
+                        * Required fields
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3>How far in advance should I book?</h3>
+                    <p>We recommend booking at least 2-3 weeks in advance for best availability, especially during peak party season (spring and summer). However, we'll do our best to accommodate last-minute requests!</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Do you deliver and pick up?</h3>
+                    <p>Yes! We offer delivery and pickup services within our service area. Delivery fees may apply based on your location.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>What's your cancellation policy?</h3>
+                    <p>We understand plans change! Please contact us as soon as possible if you need to cancel or reschedule. We'll work with you to find the best solution.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Can you help with setup?</h3>
+                    <p>Absolutely! We can arrange setup and takedown services for an additional fee. Just let us know your needs when booking.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>What if something gets damaged?</h3>
+                    <p>We understand accidents happen at parties! Minor wear and tear is expected. We'll discuss any damage concerns on a case-by-case basis.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Do you have a minimum order?</h3>
+                    <p>No minimum order required! Whether you need just a few chairs or a complete party setup, we're happy to help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Happy Memories Rentals</h3>
+            <p>Making your celebrations memorable, one event at a time.</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" title="Follow us on Instagram">📷</a>
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" title="Like us on Facebook">📘</a>
+            </div>
+            
+            <p>&copy; 2026 Happy Memories Rentals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
