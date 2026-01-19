@@ -151,6 +151,7 @@ function initDeliveryToggle() {
     );
     const section = document.getElementById('deliverySection');
     const addressInput = document.getElementById('eventAddress');
+    const deliveryFeeNotice = document.getElementById('deliveryFeeNotice');
 
     if (!radios.length || !section) return;
 
@@ -158,6 +159,11 @@ function initDeliveryToggle() {
         radio.addEventListener('change', () => {
             const isDelivery = radio.value === 'yes' && radio.checked;
             section.style.display = isDelivery ? 'block' : 'none';
+            
+            // Toggle delivery fee notice
+            if (deliveryFeeNotice) {
+                deliveryFeeNotice.style.display = isDelivery ? 'block' : 'none';
+            }
             
             // Toggle required attribute on address field
             if (addressInput) {

@@ -236,10 +236,15 @@
 
     </div>
 
-    <h3 style="text-align:center;margin:2rem 0;">
-        Estimated Total:
-        <span id="finalTotal">$0.00</span>
-    </h3>
+    <div style="background:white;border:3px solid var(--primary-color);border-radius:15px;padding:2rem;margin:2.5rem 0 1.5rem 0;text-align:center;box-shadow:0 6px 20px rgba(255,107,157,0.2);">
+        <h3 style="margin:0 0 0.5rem 0;font-size:1.3rem;color:var(--light-text);font-weight:normal;">Estimated Total</h3>
+        <div style="font-size:3rem;font-weight:bold;color:var(--primary-color);margin:0.5rem 0;">
+            <span id="finalTotal">$0.00</span>
+        </div>
+        <p id="deliveryFeeNotice" style="margin:0.5rem 0 0 0;font-size:1rem;color:#856404;font-weight:600;display:none;">
+            ⚠️ Not including delivery fee
+        </p>
+    </div>
 
     <button type="submit" class="btn btn-secondary" style="width:100%;">
         Submit Booking Request
