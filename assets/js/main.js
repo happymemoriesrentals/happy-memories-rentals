@@ -65,14 +65,20 @@ function initRentalTotals() {
         'white-chairs': 1.5,
         'adult-tables': 10,
         'kids-chairs': 3,
-        'kids-tables': 10
+        'kids-tables': 10,
+        'wooden-stools': 2,
+        'white-resin-chairs': 2.5,
+        'cherry-backdrop': 60
     };
 
     const itemNames = {
         'white-chairs': 'White Plastic Chairs',
         'adult-tables': 'Plastic Tables (Adult)',
         'kids-chairs': 'Kids Pink Chiavari Chairs',
-        'kids-tables': 'Kids Tables'
+        'kids-tables': 'Kids Tables',
+        'wooden-stools': 'Wooden Kids Stools',
+        'white-resin-chairs': 'Kids White Resin Chairs',
+        'cherry-backdrop': 'Cherry Backdrop'
     };
 
     function calculateTotal() {
