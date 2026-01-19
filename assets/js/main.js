@@ -67,18 +67,64 @@ function initRentalTotals() {
         'kids-tables': 10
     };
 
+    const itemNames = {
+        'white-chairs': 'White Plastic Chairs',
+        'adult-tables': 'Plastic Tables (Adult)',
+        'kids-chairs': 'Kids Pink Chiavari Chairs',
+        'kids-tables': 'Kids Tables'
+    };
+
     function calculateTotal() {
         let subtotal = 0;
+        const selectedItems = [];
 
         Object.keys(prices).forEach(id => {
             const qty = parseInt(document.getElementById(id)?.value || 0);
-            subtotal += qty * prices[id];
+            const itemTotal = qty * prices[id];
+            subtotal += itemTotal;
+
+            if (qty > 0) {
+                selectedItems.push({
+                    name: itemNames[id],
+                    qty: qty,
+                    price: prices[id],
+                    total: itemTotal
+                });
+            }
         });
 
+        // Update totals
         document.getElementById('totalPrice').textContent =
             `$${subtotal.toFixed(2)}`;
         document.getElementById('finalTotal').textContent =
             `$${subtotal.toFixed(2)}`;
+        
+        // Update selected items summary
+        updateSelectedItemsList(selectedItems, subtotal);
+    }
+
+    function updateSelectedItemsList(items, total) {
+        const summaryDiv = document.getElementById('selectedItemsSummary');
+        const listEl = document.getElementById('selectedItemsList');
+        const summaryTotalEl = document.getElementById('summaryTotal');
+
+        if (!summaryDiv || !listEl || !summaryTotalEl) return;
+
+        if (items.length === 0) {
+            summaryDiv.style.display = 'none';
+            return;
+        }
+
+        summaryDiv.style.display = 'block';
+        
+        listEl.innerHTML = items.map(item => `
+            <li style="padding:0.5rem 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;">
+                <span><strong>${item.name}</strong> × ${item.qty} @ $${item.price.toFixed(2)}</span>
+                <span style="font-weight:bold;">$${item.total.toFixed(2)}</span>
+            </li>
+        `).join('');
+
+        summaryTotalEl.textContent = `$${total.toFixed(2)}`;
     }
 
     Object.keys(prices).forEach(id => {

@@ -64,9 +64,9 @@
 
         </div>
 
-        <h3 style="text-align:center;margin-top:2rem;">
+        <h2 style="text-align:center;margin-top:2rem;font-size:2rem;">
             Rental Subtotal: <span id="totalPrice">$0.00</span>
-        </h3>
+        </h2>
     </div>
 </section>
 
@@ -75,6 +75,16 @@
 <div class="container">
 
 <h2 class="section-title">Submit Your Booking Request</h2>
+
+<!-- Selected Items Summary -->
+<div id="selectedItemsSummary" style="background:white;padding:1.5rem;border-radius:8px;margin-bottom:2rem;display:none;">
+    <h3 style="margin-top:0;color:#e74c3c;">Your Selected Items:</h3>
+    <ul id="selectedItemsList" style="list-style:none;padding:0;margin:1rem 0;">
+    </ul>
+    <div style="border-top:2px solid #e74c3c;padding-top:1rem;margin-top:1rem;">
+        <h3 style="margin:0;font-size:1.5rem;">Total: <span id="summaryTotal">$0.00</span></h3>
+    </div>
+</div>
 
 <div id="formMessage" class="form-message"></div>
 
@@ -101,16 +111,16 @@
         <input type="date" name="event-date" required>
     </div>
 
-    <!-- DELIVERY TOGGLE -->
+    <!-- DELIVERY YES/NO -->
     <div class="form-group">
-        <label>Do you need delivery?</label><br>
-        <label>
+        <label>Do you need delivery? *</label><br>
+        <label style="display:inline-block;margin-right:2rem;">
             <input type="radio" name="deliveryOption" value="no" checked>
-            No (Pickup)
+            No (I will pick up)
         </label>
-        <label style="margin-left:1rem;">
+        <label style="display:inline-block;">
             <input type="radio" name="deliveryOption" value="yes">
-            Yes (Delivery)
+            Yes (Please deliver)
         </label>
     </div>
 
