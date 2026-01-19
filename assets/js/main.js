@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (currentPage === 'contact.html') {
+        initContactDeliveryToggle();
         handleFormSubmission('contactForm', 'https://formspree.io/f/xjggwkja');
     }
 
@@ -143,13 +144,22 @@ function initDeliveryToggle() {
         'input[name="deliveryOption"]'
     );
     const section = document.getElementById('deliverySection');
+    const addressInput = document.getElementById('eventAddress');
 
     if (!radios.length || !section) return;
 
     radios.forEach(radio => {
         radio.addEventListener('change', () => {
-            section.style.display =
-                radio.value === 'yes' && radio.checked ? 'block' : 'none';
+            const isDelivery = radio.value === 'yes' && radio.checked;
+            section.style.display = isDelivery ? 'block' : 'none';
+            
+            // Toggle required attribute on address field
+            if (addressInput) {
+                addressInput.required = isDelivery;
+                if (!isDelivery) {
+                    addressInput.value = ''; // Clear address if switching to pickup
+                }
+            }
         });
     });
 }
@@ -190,6 +200,28 @@ function initCityDistanceEstimate() {
         } else {
             output.textContent =
                 '📍 Distance estimate not available — we will confirm manually';
+        }
+    });
+}
+
+// ========================================
+// CONTACT FORM DELIVERY TOGGLE
+// ========================================
+function initContactDeliveryToggle() {
+    const needsDeliverySelect = document.getElementById('needsDelivery');
+    const partyAddressGroup = document.getElementById('partyAddressGroup');
+    const partyAddressInput = document.getElementById('partyAddress');
+
+    if (!needsDeliverySelect || !partyAddressGroup) return;
+
+    needsDeliverySelect.addEventListener('change', (e) => {
+        if (e.target.value === 'yes') {
+            partyAddressGroup.style.display = 'block';
+            partyAddressInput.setAttribute('required', 'required');
+        } else {
+            partyAddressGroup.style.display = 'none';
+            partyAddressInput.removeAttribute('required');
+            partyAddressInput.value = '';
         }
     });
 }
